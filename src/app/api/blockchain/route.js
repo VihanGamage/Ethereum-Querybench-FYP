@@ -9,7 +9,7 @@ export async function POST(req) {
     const db = client.db('queryBench');
     const offChainDataCollection = db.collection('offChainData');
 
-    const {data} = await req.json();
+    const {Name,Surname,Gender,Occupation} = await req.json();
 
     try {
         const privateKey="0xef09176445bb9809589f7abefe7341cd7f965cea1463f8e6a4f7ebe1924c4ee4";
@@ -41,7 +41,10 @@ export async function POST(req) {
         const hashCode= receipt.transactionHash;
         const insertedData = await offChainDataCollection.insertOne({
             hashCode,
-            data,
+            Name,
+            Surname,
+            Gender,
+            Occupation
         });
 
         if (receipt.status) {

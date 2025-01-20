@@ -3,6 +3,7 @@ import {Label} from "@/components/ui/label";
 import {Textarea} from "@/components/ui/textarea";
 import ResultTable from "@/app/resultTable";
 import {HoverCard, HoverCardContent, HoverCardTrigger} from "@/components/ui/hover-card";
+import {Input} from "@/components/ui/input";
 
 export default function Home() {
 
@@ -17,9 +18,13 @@ export default function Home() {
           <div className="ml-44 mt-16 flex space-x-64">
 
             <div className="">
+                <Input placeholder="Hash Number"/>
               <Textarea
                   className=" w-96 h-96"
-                  placeholder="Enter the query"/>
+                  placeholder="Enter the query"
+
+
+              />
 
                 <Button className="mt-3">
                   Submit
