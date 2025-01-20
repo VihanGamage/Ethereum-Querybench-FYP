@@ -3,7 +3,6 @@ import {Button} from "@/components/ui/button";
 import {Label} from "@/components/ui/label";
 import {Textarea} from "@/components/ui/textarea";
 import ResultTable from "@/app/resultTable";
-import {Input} from "@/components/ui/input";
 import {useState} from "react";
 
 export default function Home() {
@@ -37,12 +36,12 @@ export default function Home() {
               </Label>
           </div>
 
-          <div className="ml-44 mt-16 flex space-x-64">
+          <div className="ml-44 mt-16 flex space-x-32">
 
             <div className="">
 
               <Textarea
-                  className=" w-96 h-96"
+                  className="w-96 h-96"
                   placeholder="Enter the query"
                   valur={query}
                   onChange={handleTextareaChange}

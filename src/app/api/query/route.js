@@ -10,23 +10,21 @@ export async function GET(req) {
     const db = client.db('queryBench');
     const offChainDataCollection = db.collection('offChainData');
 
-    const data = await offChainDataCollection.find({Name:query}).toArray();
+    //query
+
+    // Split the query string by commas and trim any whitespace
+    const hashCodes = query.split(",").map(hash => hash.trim());
+    console.log("Parsed Hash Codes:", hashCodes);
+
+
+    const data = await
+        offChainDataCollection.find({hashCode: {$in:hashCodes}}).toArray();
+
     console.log(data);
+
 
     return new Response(JSON.stringify(data), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
     });
 }
-
-// export async function POST(req){
-//
-//     const {query} = await req.json();
-//     //console.log(query)
-//
-//     return new Response(JSON.stringify(query), {
-//         status: 200,
-//         headers: { 'Content-Type': 'application/json' },
-//     });
-//
-// }
