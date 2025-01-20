@@ -1,11 +1,33 @@
+"use client"
 import {Button} from "@/components/ui/button";
 import {Label} from "@/components/ui/label";
 import {Textarea} from "@/components/ui/textarea";
 import ResultTable from "@/app/resultTable";
-import {HoverCard, HoverCardContent, HoverCardTrigger} from "@/components/ui/hover-card";
 import {Input} from "@/components/ui/input";
+import {useState} from "react";
 
 export default function Home() {
+
+    const [query, setQuery] = useState("");
+    const [results, setResults] = useState([]); // Table data
+
+    const handleTextareaChange = (event) => {
+        setQuery(event.target.value);
+    };
+
+    const handleSubmit = async () => {
+        console.log("Submitted Query:", query);
+
+        const res = await fetch(`/api/query?query=${encodeURIComponent(query)}`, {
+            method: "GET",
+        });
+        const data = await res.json();
+        console.log("Fetched Data:", data);
+
+        // Update table results
+        setResults(data);
+
+    };
 
   return (
       <>
@@ -18,36 +40,22 @@ export default function Home() {
           <div className="ml-44 mt-16 flex space-x-64">
 
             <div className="">
-                <Input placeholder="Hash Number"/>
+
               <Textarea
                   className=" w-96 h-96"
                   placeholder="Enter the query"
-
-
+                  valur={query}
+                  onChange={handleTextareaChange}
               />
 
-                <Button className="mt-3">
+                <Button className="mt-3" onClick={handleSubmit}>
                   Submit
                 </Button>
-
-                <div className="mt-20">
-                    <HoverCard>
-                        <HoverCardTrigger>
-                            Stored Data
-                        </HoverCardTrigger>
-
-                        <HoverCardContent>
-                            john-shelby-1-male,
-                            tom-cook-2-male,
-                            kim-elly-3-female
-                        </HoverCardContent>
-                    </HoverCard>
-                </div>
 
             </div>
 
             <div className="">
-                  <ResultTable/>
+                  <ResultTable data={results}/>
             </div>
           </div>
 

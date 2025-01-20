@@ -1,34 +1,7 @@
 "use client";
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table";
-import React, {useEffect, useState} from "react";
-//import {toast} from "@/components/ui/toast";
 
-async function getData(){
-    const res=await fetch("http://localhost:3000/api/query",{
-        cache:"no-store",
-    });
-    if (!res.ok){
-        throw new Error("failed")
-    }
-    return res.json();
-}
-
-
-function ResultTable() {
-    const [data, setData] = useState([]);
-
-    const fetchData = async () => {
-        try {
-            const newData = await getData();
-            setData(newData);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, [data]);
+function ResultTable({data}) {
 
     return (
         <Table className="w-1/3">
@@ -43,11 +16,11 @@ function ResultTable() {
             </TableHeader>
             <TableBody>
                 {data.map((user) => (
-                    <TableRow key={user.applicationId}>
-                        <TableCell className="font-normal text-center">{user.applicationId}</TableCell>
-                        <TableCell className="font-medium text-center">{user.password}</TableCell>
-                        <TableCell className="font-medium text-center">{user.statusCode}</TableCell>
-                        <TableCell className="font-medium text-left">{user.statusDetail}</TableCell>
+                    <TableRow key={user.Name}>
+                        <TableCell className="font-normal text-center">{user.Name}</TableCell>
+                        <TableCell className="font-medium text-center">{user.Surname}</TableCell>
+                        <TableCell className="font-medium text-center">{user.Gender}</TableCell>
+                        <TableCell className="font-medium text-left">{user.Occupation}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>
