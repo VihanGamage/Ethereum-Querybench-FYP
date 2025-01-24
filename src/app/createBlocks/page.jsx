@@ -56,7 +56,7 @@ function CreateBlocks() {
     }
 
     return (
-        <div className="border border-gray-400 rounded-lg p-2 ml-56 px-4 mt-32 flex w-2/3">
+        <div className="border border-gray-400 rounded-lg p-8 ml-56 px-4 mt-32 flex w-2/3">
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
 
