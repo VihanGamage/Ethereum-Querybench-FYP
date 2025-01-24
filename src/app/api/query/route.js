@@ -11,19 +11,36 @@ export async function GET(req) {
     const offChainDataCollection = db.collection('offChainData');
 
     //query
+    let returnData;
 
-    // Split the query string by commas and trim any whitespace
-    const hashCodes = query.split(",").map(hash => hash.trim());
-    console.log("Parsed Hash Codes:", hashCodes);
+    if (query===".find()"){    //all blocks
+        const data = await
+            offChainDataCollection.find().toArray();
+        console.log(data)
+        returnData=data;
+
+    }else if(query==="Tom"){     //specific blocks
+        const data = await
+            offChainDataCollection.find({Name:query}).toArray();
+        console.log(data)
+        returnData=data;
+
+    }else {
+
+        // Split the query string by commas and trim any whitespace
+        const hashCodes = query.split(",").map(hash => hash.trim());
+        console.log("Parsed Hash Codes:", hashCodes);
+
+        const data = await
+            offChainDataCollection.find({hashCode: {$in: hashCodes}}).toArray();
+
+        console.log(data);
+        returnData=data;
+    }
 
 
-    const data = await
-        offChainDataCollection.find({hashCode: {$in:hashCodes}}).toArray();
-
-    console.log(data);
-
-
-    return new Response(JSON.stringify(data), {
+    //----------------------//
+    return new Response(JSON.stringify(returnData), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
     });
