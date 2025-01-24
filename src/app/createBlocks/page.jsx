@@ -22,10 +22,10 @@ function CreateBlocks() {
     const form = useForm({
         resolver: zodResolver(FormSchema),
         defaultValues: {
-            Name: "John",
-            Surname: "Shelby",
-            Gender: "Male",
-            Occupation: "Engineer",
+            Name: "",
+            Surname: "",
+            Gender: "",
+            Occupation: "",
             privateKey: "0xef09176445bb9809589f7abefe7341cd7f965cea1463f8e6a4f7ebe1924c4ee4",
             receiverAddress: "0x6bb1aDd7a0Eb6AA8c7aDF8159EE042AbDD9187B6"
         },
