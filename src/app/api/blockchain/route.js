@@ -9,10 +9,10 @@ export async function POST(req) {
     const db = client.db('queryBench');
     const offChainDataCollection = db.collection('offChainData');
 
-    const {Name,Surname,Gender,Occupation} = await req.json();
+    const {Name,Surname,Gender,Occupation,privateKey,receiverAddress} = await req.json();
 
     try {
-        const privateKey="0xef09176445bb9809589f7abefe7341cd7f965cea1463f8e6a4f7ebe1924c4ee4";
+        //const privateKey= "0xef09176445bb9809589f7abefe7341cd7f965cea1463f8e6a4f7ebe1924c4ee4";
 
         // Create an account from the private key
         const account = web3.eth.accounts.privateKeyToAccount(privateKey);
@@ -20,7 +20,7 @@ export async function POST(req) {
         // Fetch the gas price from the network
         const gasPrice = await web3.eth.getGasPrice(); // Get current gas price
         const gasLimit = 22000; // Standard gas limit for ETH transfer
-        const receiverAddress="0x6bb1aDd7a0Eb6AA8c7aDF8159EE042AbDD9187B6";  //Account Address
+        //const receiverAddress = "0x6bb1aDd7a0Eb6AA8c7aDF8159EE042AbDD9187B6";  //Account Address
         const value=1;
 
 
