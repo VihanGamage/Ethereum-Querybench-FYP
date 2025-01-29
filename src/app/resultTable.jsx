@@ -12,7 +12,7 @@ function ResultTable({data}) {
             <TableHeader className="">
                 <TableRow>
                     <TableHead className="font-bold text-center text-base">Name</TableHead>
-                    <TableHead className="font-bold text-center text-base">Surname</TableHead>
+                    <TableHead className="font-bold text-center text-base">Age</TableHead>
                     <TableHead className="font-bold text-center text-base">Gender</TableHead>
                     <TableHead className="font-bold text-center text-base">Occupation</TableHead>
                 </TableRow>
@@ -21,7 +21,7 @@ function ResultTable({data}) {
                 {normalizedData.map((user) => (
                     <TableRow key={user.hashCode}>
                         <TableCell className="font-normal text-center">{user.Name}</TableCell>
-                        <TableCell className="font-medium text-center">{user.Surname}</TableCell>
+                        <TableCell className="font-medium text-center">{user.Age}</TableCell>
                         <TableCell className="font-medium text-center">{user.Gender}</TableCell>
                         <TableCell className="font-medium text-left">{user.Occupation}</TableCell>
                     </TableRow>

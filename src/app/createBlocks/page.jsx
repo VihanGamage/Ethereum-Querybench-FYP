@@ -10,7 +10,7 @@ import {Input} from "@/components/ui/input";
 
 const FormSchema = z.object({
     Name: z.string(),
-    Surname: z.string(),
+    Age: z.string(),
     Gender: z.string(),
     Occupation: z.string(),
     privateKey: z.string(),
@@ -23,7 +23,7 @@ function CreateBlocks() {
         resolver: zodResolver(FormSchema),
         defaultValues: {
             Name: "",
-            Surname: "",
+            Age: "",
             Gender: "",
             Occupation: "",
             privateKey: "0xef09176445bb9809589f7abefe7341cd7f965cea1463f8e6a4f7ebe1924c4ee4",
@@ -40,7 +40,7 @@ function CreateBlocks() {
             },
             body: JSON.stringify({
                 Name: data.Name,
-                Surname: data.Surname,
+                Age: data.Age,
                 Gender: data.Gender,
                 Occupation: data.Occupation,
                 privateKey: data.privateKey,
@@ -76,12 +76,12 @@ function CreateBlocks() {
 
                     <FormField
                         control={form.control}
-                        name="Surname"
+                        name="Age"
                         render={({field}) => (
                             <FormItem>
-                                <FormLabel>Surname</FormLabel>
+                                <FormLabel>Age</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Surname" {...field} />
+                                    <Input placeholder="Age" {...field} />
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>

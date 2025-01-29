@@ -27,10 +27,10 @@ export async function GET(req) {
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("find({Surname")) {
-        const surnameValue = query.split(":")[1].trim().slice(0, -2);
+    }else if(query.includes("find({Age")) {
+        const ageValue = query.split(":")[1].trim().slice(0, -2);
         const data = await
-            offChainDataCollection.find({Surname: surnameValue}).toArray();
+            offChainDataCollection.find({Age: ageValue}).toArray();
         console.log(data)
         returnData = data;
 
