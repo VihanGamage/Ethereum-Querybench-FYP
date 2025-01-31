@@ -36,7 +36,7 @@ export default function Home() {
               </Label>
           </div>
 
-          <div className="ml-44 mt-16 mr-44 flex space-x-32 border border-gray-400 rounded-lg p-12">
+          <div className="mx-auto mt-16 w-full max-w-6xl flex space-x-52 p-12 border border-gray-400 rounded-lg">
 
             <div className="">
 
