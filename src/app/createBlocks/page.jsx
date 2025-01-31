@@ -5,12 +5,12 @@ import {useForm} from "react-hook-form"
 import * as z from "zod"
 import {Button} from "@/components/ui/button"
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/components/ui/form"
-//import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Input} from "@/components/ui/input";
 
 const FormSchema = z.object({
     Name: z.string(),
-    Age: z.string(),
+    Age: z.coerce.number(),
     Gender: z.string(),
     Occupation: z.string(),
     privateKey: z.string(),
@@ -56,9 +56,9 @@ function CreateBlocks() {
     }
 
     return (
-        <div className="border border-gray-400 rounded-lg p-8 ml-56 px-4 mt-32 flex w-2/3">
+        <div>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="border border-gray-400 rounded-lg p-8 mx-auto w-full max-w-lg mt-28 space-y-4">
 
                     <FormField
                         control={form.control}
