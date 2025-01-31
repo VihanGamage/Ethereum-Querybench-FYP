@@ -13,11 +13,25 @@ export async function GET(req) {
     //query
     let returnData;
 
-    if (query==="find()"){    //all blocks
+    if (query==="find()") {    //all blocks
         const data = await
             offChainDataCollection.find().toArray();
         console.log(data)
-        returnData=data;
+        returnData = data;
+
+    }else if(query.includes("find({Age:{$gt:")) {
+        const gtAgeValue = query.split("$")[1].trim().slice(3, -3);
+        const data = await
+            offChainDataCollection.find({Age: {$gt: gtAgeValue}}).toArray();
+        console.log(data)
+        returnData = data;
+
+    }else if(query.includes("find({Age:{$lt:")) {
+        const gtAgeValue = query.split("$")[1].trim().slice(3, -3);
+        const data = await
+            offChainDataCollection.find({Age: {$lt: gtAgeValue}}).toArray();
+        console.log(data)
+        returnData = data;
 
     }else if(query.includes("find({Name")) {
 
