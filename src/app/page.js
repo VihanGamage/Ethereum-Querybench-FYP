@@ -20,11 +20,14 @@ export default function Home() {
         const res = await fetch(`/api/query?query=${encodeURIComponent(query)}`, {
             method: "GET",
         });
-        const data = await res.json();
-        console.log("Fetched Data:", data);
-
-        // Update table results
-        setResults(data);
+        try {
+            const data = await res.json();
+            console.log("Fetched Data:", data);
+            // Update table results
+            setResults(data);
+        }catch (err){
+            console.log("Error in query")
+        }
 
     };
 
