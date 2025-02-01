@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import {ModeToggle} from "@/components/modetoggle";
 import {BlockButton} from "@/components/blockButton";
+import {DocButton} from "@/components/docButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
       >
+          <DocButton/>
           <BlockButton/>
           <ModeToggle/>
           {children}

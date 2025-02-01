@@ -35,44 +35,44 @@ export async function GET(req) {
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("find({Name")) {
+    }else if(query.includes("find({ Name : ")) {
 
-        const nameValue = query.split(":")[1].trim().slice(0, -2);
+        const nameValue = query.split(":")[1].slice(1, -2);
         const data = await
             offChainDataCollection.find({Name: nameValue}).toArray();
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("find({Age")) {
-        const ageValue = query.split(":")[1].trim().slice(0, -2);
+    }else if(query.includes("find({ Age : ")) {
+        const ageValue = query.split(":")[1].slice(1, -2);
         const ageValueConverted = Number(ageValue);
         const data = await
             offChainDataCollection.find({Age: ageValueConverted}).toArray();
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("find({Gender")) {
-        const genderValue = query.split(":")[1].trim().slice(0, -2);
+    }else if(query.includes("find({ Gender : ")) {
+        const genderValue = query.split(":")[1].slice(1, -2);
         const data = await
             offChainDataCollection.find({Gender: genderValue}).toArray();
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("find({Occupation")) {
-        const occupationValue = query.split(":")[1].trim().slice(0, -2);
+    }else if(query.includes("find({ Occupation : ")) {
+        const occupationValue = query.split(":")[1].trim().slice(1, -2);
         const data = await
             offChainDataCollection.find({Occupation: occupationValue}).toArray();
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("find({hashCode")) {
-        const hashCodeValue = query.split(":")[1].trim().slice(0, -2);
+    }else if(query.includes("find({ hashCode : ")) {
+        const hashCodeValue = query.split(":")[1].trim().slice(1, -2);
         const data = await
             offChainDataCollection.find({hashCode: hashCodeValue}).toArray();
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $sum: $Age")) {
+    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $sum: $Age }}}])")) {
         const data = await offChainDataCollection.
         aggregate([{$group: {_id: "$Occupation", Age: {$sum:"$Age"}}},
             {
@@ -84,7 +84,7 @@ export async function GET(req) {
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $avg: $Age")) {
+    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $avg: $Age }}}])")) {
         const data = await offChainDataCollection.
         aggregate([{$group: {_id: "$Occupation", Age: {$avg:"$Age"}}},
             {
@@ -96,7 +96,7 @@ export async function GET(req) {
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $min: $Age")) {
+    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $min: $Age }}}])")) {
         const data = await offChainDataCollection.aggregate([{$group: {_id: "$Occupation", Age: {$min: "$Age"}}},
             {
                 $project: {
@@ -108,7 +108,7 @@ export async function GET(req) {
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $max: $Age")) {
+    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $max: $Age }}}])")) {
         const data = await offChainDataCollection.aggregate([{$group: {_id: "$Occupation", Age: {$max: "$Age"}}},
             {
                 $project: {
