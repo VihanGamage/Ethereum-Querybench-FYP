@@ -19,17 +19,19 @@ export async function GET(req) {
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("find({Age:{$gt:")) {
-        const gtAgeValue = query.split("$")[1].trim().slice(3, -3);
+    }else if(query.includes("find({ Age : { $gt : ")) {    //$gt
+        const gtAgeValue = query.split("$")[1].trim().slice(5, -3);
+        const gtAgeValueConverted = Number(gtAgeValue);
         const data = await
-            offChainDataCollection.find({Age: {$gt: gtAgeValue}}).toArray();
+            offChainDataCollection.find({Age: {$gt: gtAgeValueConverted}}).toArray();
         console.log(data)
         returnData = data;
 
-    }else if(query.includes("find({Age:{$lt:")) {
-        const gtAgeValue = query.split("$")[1].trim().slice(3, -3);
+    }else if(query.includes("find({ Age : { $lt : ")) {    //$lt
+        const ltAgeValue = query.split("$")[1].trim().slice(5, -3);
+        const ltAgeValueConverted = Number(ltAgeValue);
         const data = await
-            offChainDataCollection.find({Age: {$lt: gtAgeValue}}).toArray();
+            offChainDataCollection.find({Age: {$lt: ltAgeValueConverted}}).toArray();
         console.log(data)
         returnData = data;
 
@@ -43,8 +45,9 @@ export async function GET(req) {
 
     }else if(query.includes("find({Age")) {
         const ageValue = query.split(":")[1].trim().slice(0, -2);
+        const ageValueConverted = Number(ageValue);
         const data = await
-            offChainDataCollection.find({Age: ageValue}).toArray();
+            offChainDataCollection.find({Age: ageValueConverted}).toArray();
         console.log(data)
         returnData = data;
 
@@ -69,6 +72,54 @@ export async function GET(req) {
         console.log(data)
         returnData = data;
 
+    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $sum: $Age")) {
+        const data = await offChainDataCollection.
+        aggregate([{$group: {_id: "$Occupation", Age: {$sum:"$Age"}}},
+            {
+                $project: {
+                    _id: 0,  // Hide _id
+                    Occupation: "$_id",  // Rename _id to Occupation
+                    Age: 1   // Keep Age
+            }}]).toArray();
+        console.log(data)
+        returnData = data;
+
+    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $avg: $Age")) {
+        const data = await offChainDataCollection.
+        aggregate([{$group: {_id: "$Occupation", Age: {$avg:"$Age"}}},
+            {
+                $project: {
+                    _id: 0,
+                    Occupation: "$_id",
+                    Age: 1
+                }}]).toArray();
+        console.log(data)
+        returnData = data;
+
+    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $min: $Age")) {
+        const data = await offChainDataCollection.aggregate([{$group: {_id: "$Occupation", Age: {$min: "$Age"}}},
+            {
+                $project: {
+                    _id: 0,
+                    Occupation: "$_id",
+                    Age: 1
+                }
+            }]).toArray();
+        console.log(data)
+        returnData = data;
+
+    }else if(query.includes("aggregate([{ $group: { _id: $Occupation, Age: { $max: $Age")) {
+        const data = await offChainDataCollection.aggregate([{$group: {_id: "$Occupation", Age: {$max: "$Age"}}},
+            {
+                $project: {
+                    _id: 0,
+                    Occupation: "$_id",
+                    Age: 1
+                }
+            }]).toArray();
+        console.log(data)
+        returnData = data;
+
     }
 
     //----------------------//
@@ -77,3 +128,4 @@ export async function GET(req) {
         headers: { 'Content-Type': 'application/json' },
     });
 }
+//////////////////////////
