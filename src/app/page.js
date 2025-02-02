@@ -4,6 +4,7 @@ import {Label} from "@/components/ui/label";
 import {Textarea} from "@/components/ui/textarea";
 import ResultTable from "@/app/resultTable";
 import {useState} from "react";
+import Image from "next/image";
 
 export default function Home() {
 
@@ -33,13 +34,14 @@ export default function Home() {
 
   return (
       <>
-          <div className="flex items-center justify-center">
-              <Label className="text-2xl mt-3">
+          <div className="flex items-center justify-center mt-8">
+              <Image src="/logo.webp" alt="logo" height={60} width={40}/>
+              <Label className="text-3xl ml-2">
                   Ethereum QueryBench
               </Label>
           </div>
 
-          <div className="mx-auto mt-16 w-full max-w-6xl flex space-x-52 p-12 border border-gray-400 rounded-lg">
+          <div className="mx-auto mt-14 w-full max-w-6xl flex space-x-52 p-12 border border-gray-400 rounded-lg">
 
             <div className="">
 
