@@ -7,6 +7,7 @@ import {Button} from "@/components/ui/button"
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/components/ui/form"
 import React, {useEffect, useState} from "react";
 import {Input} from "@/components/ui/input";
+import {useToast} from "@/hooks/use-toast";
 
 const FormSchema = z.object({
     Name: z.string(),
@@ -18,6 +19,8 @@ const FormSchema = z.object({
 })
 
 function CreateBlocks() {
+
+    const {toast} = useToast();
 
     const form = useForm({
         resolver: zodResolver(FormSchema),
@@ -50,8 +53,16 @@ function CreateBlocks() {
         if (!res.ok) {
             // If the response status is not okay (e.g., 404 or 500),
             console.log(`Not valid URL! \nStatus: ${res.status}, ${res.statusText}`)
+            toast({
+                variant: "destructive",
+                description: "Error Creating Block",
+            })
         } else {
             console.log("Success")
+            toast({
+                variant: "success",
+                description: "New Block Created",
+            })
         }
     }
 
