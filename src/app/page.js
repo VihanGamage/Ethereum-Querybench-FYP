@@ -5,11 +5,13 @@ import {Textarea} from "@/components/ui/textarea";
 import ResultTable from "@/app/resultTable";
 import {useState} from "react";
 import Image from "next/image";
+import {useToast} from "@/hooks/use-toast";
 
 export default function Home() {
 
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]); // Table data
+    const {toast} = useToast();
 
     const handleTextareaChange = (event) => {
         setQuery(event.target.value);
@@ -26,8 +28,16 @@ export default function Home() {
             console.log("Fetched Data:", data);
             // Update table results
             setResults(data);
+            toast({
+                variant: "success",
+                description: "Query Successful",
+            })
         }catch (err){
             console.log("Error in query")
+            toast({
+                variant: "destructive",
+                description: "Invalid Query",
+            })
         }
 
     };
