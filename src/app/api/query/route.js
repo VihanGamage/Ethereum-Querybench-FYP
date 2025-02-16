@@ -120,6 +120,15 @@ export async function GET(req) {
         console.log(data)
         returnData = data;
 
+    }else if(query.includes(`find({ Name: { $regex: "^`)) { ///////
+        const regexValue = query.split("^")[1].trim().slice(0, -4);
+        console.log(regexValue);//////////
+        const regexString = "^"+regexValue;
+        const data = await
+            offChainDataCollection.find({Name: { $regex: regexString}}).toArray();
+        console.log(data)
+        returnData = data;
+
     }
 
     //----------------------//

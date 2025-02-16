@@ -27,6 +27,7 @@ export default function (){
                     <p>{`find({ hashCode : })`}</p>
                     <p>{`find({ Age : { $gt : }})`}</p>
                     <p>{`find({ Age : { $lt : }})`}</p>
+                    <p>{`find({ Name: { $regex: "^`}</p>
                     <p>{`aggregate([{ $group: { _id: $Occupation, Age: { $sum: $Age }}}])`}</p>
                     <p>{`aggregate([{ $group: { _id: $Occupation, Age: { $avg: $Age }}}])`}</p>
                     <p>{`aggregate([{ $group: { _id: $Occupation, Age: { $min: $Age }}}])`}</p>
