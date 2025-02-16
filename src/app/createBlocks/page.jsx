@@ -68,8 +68,11 @@ function CreateBlocks() {
 
     return (
         <div>
+            <h1 className="justify-center flex text-3xl bold mt-20">
+                Create Blocks
+            </h1>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="border border-gray-400 rounded-lg p-8 mx-auto w-full max-w-lg mt-28 space-y-4">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="border border-gray-400 rounded-lg p-8 mx-auto w-full max-w-lg mt-4 space-y-4">
 
                     <FormField
                         control={form.control}
