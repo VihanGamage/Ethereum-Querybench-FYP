@@ -123,9 +123,33 @@ export async function GET(req) {
     }else if(query.includes(`find({ Name: { $regex: "^`)) {
         const regexValue = query.split("^")[1].trim().slice(0, -5);
         console.log(regexValue); //
-        const regexString = "^"+regexValue;
+        const regexString = "^" + regexValue;
         const data = await
-            offChainDataCollection.find({Name: { $regex: regexString}}).toArray();
+            offChainDataCollection.find({Name: {$regex: regexString}}).toArray();
+        console.log(data)
+        returnData = data;
+
+    }else if(query.includes("find().sort({ Name: 1 })")) {
+        const data = await
+            offChainDataCollection.find().sort({Name: 1}).toArray();
+        console.log(data)
+        returnData = data;
+
+    }else if(query.includes("find().sort({ Name: -1 })")) {
+        const data = await
+            offChainDataCollection.find().sort({Name:-1}).toArray();
+        console.log(data)
+        returnData = data;
+
+    }else if(query.includes("find().sort({ Age: 1 })")) {
+        const data = await
+            offChainDataCollection.find().sort({Age:1}).toArray();
+        console.log(data)
+        returnData = data;
+
+    }else if(query.includes("find().sort({ Age: -1 })")) {
+        const data = await
+            offChainDataCollection.find().sort({Age:-1}).toArray();
         console.log(data)
         returnData = data;
 
