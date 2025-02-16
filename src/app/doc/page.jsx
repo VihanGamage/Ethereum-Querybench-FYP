@@ -31,6 +31,7 @@ export default function (){
                     <p>{`find().sort({ Name: -1 })`}</p>
                     <p>{`find().sort({ Age: 1 })`}</p>
                     <p>{`find().sort({ Age: -1 })`}</p>
+                    <p>{`find().limit( )`}</p>
                     <p>{`find({ Name: { $regex: "^" }})`}</p>
                     <p>{`aggregate([{ $group: { _id: $Occupation, Age: { $sum: $Age }}}])`}</p>
                     <p>{`aggregate([{ $group: { _id: $Occupation, Age: { $avg: $Age }}}])`}</p>

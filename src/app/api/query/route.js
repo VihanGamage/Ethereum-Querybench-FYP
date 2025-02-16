@@ -153,6 +153,14 @@ export async function GET(req) {
         console.log(data)
         returnData = data;
 
+    }else if(query.includes("find().limit(")) {
+        const limitValue = query.split("t")[1].trim().slice(1, -1);
+        const limitValueConverted = Number(limitValue);
+        const data = await
+            offChainDataCollection.find().limit(limitValueConverted).toArray();
+        console.log(data)
+        returnData = data;
+
     }
 
     //----------------------//
