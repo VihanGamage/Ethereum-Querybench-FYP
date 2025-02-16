@@ -5,7 +5,7 @@ import {useForm} from "react-hook-form"
 import * as z from "zod"
 import {Button} from "@/components/ui/button"
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/components/ui/form"
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Input} from "@/components/ui/input";
 import {useToast} from "@/hooks/use-toast";
 
@@ -68,11 +68,13 @@ function CreateBlocks() {
 
     return (
         <div>
-            <h1 className="justify-center flex text-3xl bold mt-20">
-                Create Blocks
-            </h1>
+
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="border border-gray-400 rounded-lg p-8 mx-auto w-full max-w-lg mt-4 space-y-4">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="border border-gray-400 rounded-lg p-8 mx-auto w-full max-w-lg mt-16 space-y-4 mb-12">
+
+                    <h1 className="justify-center flex text-2xl bold mt-0 mb-8">
+                        Create Blocks
+                    </h1>
 
                     <FormField
                         control={form.control}

@@ -5,7 +5,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle,}
 export default function (){
 
     return(
-        <div className="border border-gray-400 rounded-lg p-8 mx-auto w-full max-w-2xl mt-20 space-y-4">
+        <div className="border border-gray-400 rounded-lg p-8 mx-auto w-full max-w-2xl mt-16 space-y-4 mb-12">
             <h1 className="justify-center flex text-3xl bold">
                 Documentation
             </h1>
@@ -41,6 +41,7 @@ export default function (){
                 </CardContent>
 
             </Card>
+
         </div>
     )
 }
