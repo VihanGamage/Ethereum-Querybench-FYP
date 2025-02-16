@@ -121,7 +121,7 @@ export async function GET(req) {
         returnData = data;
 
     }else if(query.includes(`find({ Name: { $regex: "^`)) { ///////
-        const regexValue = query.split("^")[1].trim().slice(0, -4);
+        const regexValue = query.split("^")[1].trim().slice(0, -5);
         console.log(regexValue);//////////
         const regexString = "^"+regexValue;
         const data = await
