@@ -5,6 +5,7 @@ import {ModeToggle} from "@/components/modetoggle";
 import {BlockButton} from "@/components/blockButton";
 import {DocButton} from "@/components/docButton";
 import {Toaster} from "@/components/ui/toaster";
+import Header from "@/components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
           <DocButton/>
           <BlockButton/>
           <ModeToggle/>
+          <Header/>
           {children}
           <Toaster/>
       </ThemeProvider>
