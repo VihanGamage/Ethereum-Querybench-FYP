@@ -26,17 +26,24 @@ export default function Home() {
         try {
             const data = await res.json();
             console.log("Fetched Data:", data);
-            // Update table results
-            setResults(data);
-            toast({
-                variant: "success",
-                description: "Query Successful",
-            })
+            if (!data || !Array.isArray(data) || data.length === 0){
+                toast({
+                    variant: "destructive",
+                    description: "Invalid Query",
+                })
+            }else {
+                // Update table results
+                setResults(data);
+                toast({
+                    variant: "success",
+                    description: "Query Successful",
+                })
+            }
         }catch (err){
-            console.log("Error in query")
+            console.log("Error Querying")
             toast({
                 variant: "destructive",
-                description: "Invalid Query",
+                description: "Error Querying",
             })
         }
 
