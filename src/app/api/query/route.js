@@ -20,7 +20,7 @@ export async function GET(req) {
         returnData = data;
 
     }else if(query.includes("find({ Age : { $gt : ")) {    //$gt
-        const gtAgeValue = query.split("$")[1].trim().slice(5, -3);
+        const gtAgeValue = query.split("$")[1].slice(5, -3);
         const gtAgeValueConverted = Number(gtAgeValue);
         const data = await
             offChainDataCollection.find({Age: {$gt: gtAgeValueConverted}}).toArray();
@@ -28,7 +28,7 @@ export async function GET(req) {
         returnData = data;
 
     }else if(query.includes("find({ Age : { $lt : ")) {    //$lt
-        const ltAgeValue = query.split("$")[1].trim().slice(5, -3);
+        const ltAgeValue = query.split("$")[1].slice(5, -3);
         const ltAgeValueConverted = Number(ltAgeValue);
         const data = await
             offChainDataCollection.find({Age: {$lt: ltAgeValueConverted}}).toArray();
@@ -59,14 +59,14 @@ export async function GET(req) {
         returnData = data;
 
     }else if(query.includes("find({ Occupation : ")) {
-        const occupationValue = query.split(":")[1].trim().slice(1, -2);
+        const occupationValue = query.split(":")[1].slice(1, -2);
         const data = await
             offChainDataCollection.find({Occupation: occupationValue}).toArray();
         console.log(data)
         returnData = data;
 
     }else if(query.includes("find({ hashCode : ")) {
-        const hashCodeValue = query.split(":")[1].trim().slice(1, -2);
+        const hashCodeValue = query.split(":")[1].slice(1, -2);
         const data = await
             offChainDataCollection.find({hashCode: hashCodeValue}).toArray();
         console.log(data)
@@ -121,7 +121,7 @@ export async function GET(req) {
         returnData = data;
 
     }else if(query.includes(`find({ Name: { $regex: "^`)) {
-        const regexValue = query.split("^")[1].trim().slice(0, -5);
+        const regexValue = query.split("^")[1].slice(0, -5);
         console.log(regexValue); //
         const regexString = "^" + regexValue;
         const data = await

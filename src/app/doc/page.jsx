@@ -20,7 +20,7 @@ export default function (){
                 </CardHeader>
                 <CardContent className="ml-16 mt-2 mb-4">
                     <p>{`find()`}</p>
-                    <p>{`find({ Name: })`}</p>
+                    <p>{`find({ Name : })`}</p>
                     <p>{`find({ Age : })`}</p>
                     <p>{`find({ Gender : })`}</p>
                     <p>{`find({ Occupation : })`}</p>
